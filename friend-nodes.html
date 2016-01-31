@@ -5,6 +5,8 @@
 <body>
   <h1>Welcome to Friend-Nodes!</h1>
   {{> upload}}
+  {{> graf}}
+  {{snapToRadius(cy.getElementbyId("n1"), cy.getElementbyId("n2"));  }}
 </body>
 <template name="upload">
   <h4 class = "page-header">Upload your data</h4>
@@ -14,4 +16,11 @@
   {{else}}
    <p><i class="fa fa-spin fa-refresh"></i>Uploading files...</p>
   {{/unless}}
+</template>
+<template name="graf">
+
+
+                <div id="cy"></div>
+
+
 </template>
