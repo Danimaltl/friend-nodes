@@ -1,0 +1,21 @@
+Inputs: Node_1, Node_2, Radius
+
+Get x,y for Node_1 and Node_2
+
+get the formula for the slope of the line that extends
+from Node_1 to Node_2
+
+  (x_c, y_c) = {(x_2 - x_1), (y_2 - y_1)} 
+
+Turn that velocity vector into a unit vector by dividing
+by the magnitude
+
+  (x_u, y_u) = {(x_c / Math.sqrt(Math.pow(x_c,2) + Math.pow(y_c,2)),
+                (y_c / Math.sqrt(Math.pow(x_c,2) + Math.pow(y_c,2))}
+
+Now multiply that unit vector by r and add it to the position of
+the static node (Node_1).
+
+  (x_2, y_2) = (x_1 + x_u * r, y_1 + y_u * r)  
+
+
