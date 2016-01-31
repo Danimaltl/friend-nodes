@@ -1,0 +1,17 @@
+<head>
+  <title>friend-nodes</title>
+</head>
+
+<body>
+  <h1>Welcome to Friend-Nodes!</h1>
+  {{> upload}}
+</body>
+<template name="upload">
+  <h4 class = "page-header">Upload your data</h4>
+ 
+  {{#unless uploading}}
+   <input type="file" name="uploadCSV">
+  {{else}}
+   <p><i class="fa fa-spin fa-refresh"></i>Uploading files...</p>
+  {{/unless}}
+</template>
