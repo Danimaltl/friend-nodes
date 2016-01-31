@@ -1,5 +1,19 @@
-// ver 16.1.30.1447
+// ver 16.1.30.2209
 
+
+for (var a=[],i=0;i<50;++i) a[i]=i;
+function shuffle(array) {
+    var tmp, curr, top = array.length;
+    if (top) while(--top) {
+        curr = Math.floor(Math.random() * (top + 1));
+        tmp = array[curr];
+        array[curr] = array[top];
+        array[top] = tmp;
+    }
+    return array;
+}
+
+var b = [shuffle(a)][shuffle(a)][shuffle(a)];
 var convLapse = 57600000;
 var scoreLim =100.00;
 var sendWeight =1;
@@ -23,7 +37,12 @@ function text(number, personName, timeS,sent, message){
 	
 }  
 //takes in texts and injects them into 
-
+function textFactory(data){
+	var texts=[];
+	for(var i =1; i < data; i++)
+		texts[texts.length] = new Text(data[1][i],data[2][i],data[3][i],data[4][i]);
+	return texts;
+}
 //function to sort texts by number
 function nameComparator(a,b){
 	if (a[0] < b[0]) return -1;
@@ -36,6 +55,7 @@ function timeComparator(a,b){
 	if(a[2] > b[2]) return 1;
 	return 0;
 }
+
 //takes in data and adds to existing threads or creates new entries
 function textThreadFactory(data){
 	data = data.sort(nameComparator);
