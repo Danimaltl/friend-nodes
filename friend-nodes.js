@@ -135,6 +135,8 @@ if (Meteor.isServer) {
   });
 }
 //counts instances of first field in JSON dataset out of the papa-parse
+//this then determines a number from 0-1 which represents distance from the central node
+//0 being absolute closest, 1 being farthest.
 radiusGeneratorSMS = function(data){
   var radiusArray = [[]];
   //loops through the rows present in the data
@@ -159,6 +161,15 @@ radiusGeneratorSMS = function(data){
       radiusArray[0].push(addr);
       radiusArray[1].push(1);
     }  
+  }
+  //gets us a generalized weight from 0 to 1, 0 being frequent, 1 being infrequent.
+  for(var i = 0; i<radiusArray[1].length; i++){
+    radiusArray[1][i] = 1/radiusArray[1][i];
+    if(radiusArray[1][i]) <= 0.003){
+      radiusArray[1][i] = 0.1;
+    }
+  }
+}
   }
   return radiusArray;
 };
